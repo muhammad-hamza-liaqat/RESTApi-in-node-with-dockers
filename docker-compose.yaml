@@ -6,6 +6,5 @@ services:
     ports:
       - "9000:9000"
     environment:
-      NODE_ENV: development
-      MONGO_URI: mongodb+srv://g7-dev:CgSFJMwbAWxFc79V@g7cluster01.uv8pzmk.mongodb.net/
-    container_name: node-on-dockers
+      - .env 
+    container_name: node-demo-dockers

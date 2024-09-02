@@ -113,3 +113,36 @@ Remove a stopped container using its ID:
 docker rm [container_id]
 ```
 
+# Easy way to push, pull and use an image
+
+```bash
+docker login
+```
+
+
+```bash
+docker build -t docker-hub-username/meaningful-image-name:tag .
+```
+
+```bash
+docker images
+```
+
+```bash
+docker push docker-hub-username/meaningful-image-name:tag
+```
+
+```bash
+docker pull muhammadhamza4099558/node-with-dockers:v1
+```
+
+```bash
+docker ps
+```
+
+```bash
+docker run -d -p 9000:9000 muhammadhamza4099558/node-with-dockers:v1
+```
+```bash
+docker logs [container id]
+```
