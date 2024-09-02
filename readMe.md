@@ -1,7 +1,9 @@
 # Docker Commands
 
 # Log in to Docker Hub
+   ```bash
 docker login
+   ```
 
 # Build the Docker image
 docker-compose build
