@@ -1,0 +1,27 @@
+{
+  "name": "rest-node-docker",
+  "version": "1.0.0",
+  "description": "nodejs with dockers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "node",
+    "dockers",
+    "npm",
+    "nvm"
+  ],
+  "author": "muhammad-hamza-liaqat",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
