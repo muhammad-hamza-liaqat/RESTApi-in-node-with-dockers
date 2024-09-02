@@ -1,42 +1,115 @@
-# Docker Commands
 
-# Log in to Docker Hub
-   ```bash
+# Docker Commands Cheat Sheet
+
+This guide provides a list of commonly used Docker commands, including login, building, tagging, pushing, pulling, and managing Docker images and containers.
+
+## Docker Login
+
+Log in to Docker Hub:
+
+```bash
 docker login
-   ```
+```
 
-# Build the Docker image
+## Building and Managing Docker Images
+
+### Build the Docker Image
+
+Use `docker-compose` to build a Docker image:
+
+```bash
 docker-compose build
+```
 
-# Tag the image (if needed)
+### Tag the Image
+
+Tag a local image with a new name (if needed):
+
+```bash
 docker tag local-image-name yourusername/your-image-name:tag
+```
 
-# Push the image to Docker Hub
+## Pushing and Pulling Docker Images
+
+### Push the Image to Docker Hub
+
+Push your image to Docker Hub:
+
+```bash
 docker push yourusername/your-image-name:tag
+```
 
-# Pull an image from Docker Hub
+### Pull an Image from Docker Hub
+
+Pull an image from Docker Hub:
+
+```bash
 docker pull yourusername/your-image-name:tag
+```
 
-# Example: Pull a specific image
+#### Example: Pull a Specific Image
+
+```bash
 docker pull muhammadhamza4099558/node-on-dockers:latest
+```
 
-# List all images on your local machine
+## Managing Docker Images
+
+### List All Images on Your Local Machine
+
+List all Docker images available locally:
+
+```bash
 docker images
+```
 
-# Run the image in a container
+## Running Docker Containers
+
+### Run the Image in a Container
+
+Run a Docker image in a new container, mapping a port:
+
+```bash
 docker run -d -p 9000:9000 yourusername/your-image-name:tag
+```
 
-# Example: Run a specific image
+#### Example: Run a Specific Image
+
+```bash
 docker run -d -p 9000:9000 muhammadhamza4099558/node-on-dockers:latest
+```
 
-# View all running containers
+## Viewing and Managing Containers
+
+### View All Running Containers
+
+List all running containers:
+
+```bash
 docker ps
+```
 
-# View logs of a running container
+### View Logs of a Running Container
+
+View logs from a running container using its ID:
+
+```bash
 docker logs [container_id]
+```
 
-# Stop a running container
+### Stop a Running Container
+
+Stop a container using its ID:
+
+```bash
 docker stop [container_id]
+```
 
-# Remove a stopped container
+### Remove a Stopped Container
+
+Remove a stopped container using its ID:
+
+```bash
 docker rm [container_id]
+```
+
