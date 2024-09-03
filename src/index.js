@@ -5,6 +5,10 @@ const { userRoutes } = require('./routes/user.routes')
 require('./config/mongodb.config')
 const { logger, logRequestDuration } = require('./utils/winston')
 
+// middlewares
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
 app.use(logRequestDuration)
 app.use((req, res, next) => {
   logger.info(`${req.method} ${req.url}`)
