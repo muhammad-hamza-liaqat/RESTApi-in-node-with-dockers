@@ -34,7 +34,7 @@ const User = sequelize.define(
 sequelize
   .sync({ force: false }) 
   .then(() => {
-    console.log('Database & tables created!')
+    console.log('user mode sync')
   })
 
 module.exports = User
