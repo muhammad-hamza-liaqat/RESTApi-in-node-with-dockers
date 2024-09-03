@@ -7,7 +7,5 @@ const {
 const indexRoutes = express.Router()
 
 indexRoutes.get('/', defaultPage)
-indexRoutes.get('/menu', menuPage)
-indexRoutes.get('/order', orderPage)
 
 module.exports = { indexRoutes }
