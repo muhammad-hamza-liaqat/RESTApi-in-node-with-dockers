@@ -1,5 +1,5 @@
 const User = require('../model/user.model')
-const { HTTPResponse } = require('../utils/response')
+const { HTTPResponse, HTTPError } = require('../utils/response')
 const StatusCodes = require('http-status-codes')
 
 const defaultPage = async (req, res) => {
@@ -21,4 +21,16 @@ const addUser = async (req, res) => {
   return res.status(StatusCodes.CREATED).json(response)
 }
 
-module.exports = { defaultPage, getAllUsers, addUser }
+const deleteUserById = async (req, res) => {
+  let error, response
+  const user = await User.findByIdAndDelete(req.params.id)
+  console.log(`${req.params.id} to be deleted!`)
+  if (!user) {
+    error = new HTTPError('user not found', StatusCodes.NOT_FOUND)
+    return res.status(StatusCodes.NOT_FOUND).json(error)
+  }
+  response = new HTTPResponse('user deleted successfully!', StatusCodes.OK)
+  return res.status(StatusCodes.OK).json(response)
+}
+
+module.exports = { defaultPage, getAllUsers, addUser, deleteUserById }

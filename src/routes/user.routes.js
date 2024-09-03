@@ -2,11 +2,12 @@ const express = require('express')
 const {
   defaultPage,
   getAllUsers,
-  addUser
+  addUser, 
+  deleteUserById
 } = require('../controller/user.controller')
 const userRoutes = express.Router()
 const { catchAsyncErrors, validationCatches } = require('../utils/tryCatch')
-const { addUserValidation } = require('../utils/yup.validations')
+const { addUserValidation, deleteUserValidations } = require('../utils/yup.validations')
 
 userRoutes.get('/', catchAsyncErrors(defaultPage))
 userRoutes.get('/find-all', catchAsyncErrors(getAllUsers))
@@ -15,5 +16,6 @@ userRoutes.post(
   validationCatches(addUserValidation),
   catchAsyncErrors(addUser)
 )
+userRoutes.delete("/delete/:id", validationCatches(deleteUserValidations), catchAsyncErrors(deleteUserById) )
 
 module.exports = { userRoutes }
