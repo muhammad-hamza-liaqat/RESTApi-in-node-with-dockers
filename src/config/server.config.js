@@ -1,9 +1,9 @@
 const { connectToDatabase } = require("./postgres.config")
+const { sequelize }= require("./postgres.config")
 
 const startServer = async (app) => {
   try {
-    const sequelize = await connectToDatabase();
-    
+    const sequelize = await connectToDatabase();    
     app.listen(process.env.PORT, () => {
       console.warn(`Server is running at http://localhost:${process.env.PORT}`);
     });

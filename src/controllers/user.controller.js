@@ -7,7 +7,7 @@ const defaultPage = async (req, res) => {
 }
 
 const getAllUsers = async (req, res) => {
-  const users = await User.find({})
+  const users = await User.findAll({})
   console.log(users, 'users: <----')
   let response = new HTTPResponse('Operation completed successfully', users)
   return res.status(StatusCodes.OK).json(response)

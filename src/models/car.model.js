@@ -1,40 +1,32 @@
 const { DataTypes } = require('sequelize')
 const { sequelize } = require('../config/postgres.config')
 
-const User = sequelize.define(
-  'User',
+const Car = sequelize.define(
+  'Car',
   {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
-    userName: {
+    carName: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    email: {
-      type: DataTypes.STRING,
-      unique: true,
-      allowNull: false,
-      validate: {
-        isEmail: true
-      }
-    },
-    password: {
+    model: {
       type: DataTypes.STRING,
       allowNull: false
     }
   },
   {
-    tableName: 'users',
+    tableName: 'cars',
     timestamps: true
   }
 )
 sequelize
   .sync({ force: false }) 
   .then(() => {
-    console.log('user model sync')
+    console.log('car model sync')
   })
 
-module.exports = User
+module.exports = Car
