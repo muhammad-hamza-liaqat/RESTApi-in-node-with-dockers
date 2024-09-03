@@ -8,7 +8,8 @@ const addUserValidation = (req, res, next) => {
     email: yup
       .string()
       .email('Enter a valid Email')
-      .required('user email is required!')
+      .required('user email is required!'),
+    password: yup.string().required('password is required!')
   })
   try {
     schema.validateSync(req.body, { abortEarly: false })

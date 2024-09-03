@@ -1,5 +1,6 @@
-const { HTTPResponse } = require("../helpers/response")
-const User = require("../models/user.model")
+const { HTTPResponse } = require('../helpers/response')
+const StatusCodes = require('http-status-codes')
+const User = require('../models/user.model')
 
 const defaultPage = async (req, res) => {
   res.end('hello from default route')

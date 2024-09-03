@@ -6,21 +6,24 @@ const User = sequelize.define(
   {
     id: {
       type: DataTypes.UUID,
-      autoIncrement: true,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
-    username: {
-      type: DataTypes.STRING
+    userName: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
       unique: true,
+      allowNull: false,
       validate: {
         isEmail: true
       }
     },
     password: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     }
   },
   {
@@ -28,5 +31,10 @@ const User = sequelize.define(
     timestamps: true
   }
 )
+sequelize
+  .sync({ force: false }) 
+  .then(() => {
+    console.log('Database & tables created!')
+  })
 
 module.exports = User
