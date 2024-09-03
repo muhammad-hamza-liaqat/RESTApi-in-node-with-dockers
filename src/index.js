@@ -1,9 +1,9 @@
 const express = require('express')
 const app = express()
 require('dotenv').config()
-const { indexRoutes } = require('./routes/index.routes')
 const { startServer } = require('./config/server.config')
+const { userRoutes } = require('./routes/user.routes')
 
-app.use('/', indexRoutes)
+app.use('/', userRoutes)
 
 startServer(app);
