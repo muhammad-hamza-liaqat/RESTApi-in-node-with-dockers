@@ -1,22 +1,21 @@
-const { Client } = require('pg')
+const { Sequelize } = require('sequelize');
+
+const sequelize = new Sequelize(process.env.DATABASE, process.env.USER, process.env.PASSWORD, {
+  host: process.env.DB_HOST,
+  dialect: 'postgres',
+  port: process.env.PORT_DB,
+  logging: false,
+});
 
 const connectToDatabase = async () => {
-  const client = new Client({
-    user: process.env.USER,
-    host: process.env.HOST,
-    database: process.env.DATABASE,
-    password: process.env.PASSWORD,
-    port: process.env.PORT_DB
-  })
-
   try {
-    await client.connect()
-    console.log('Connected to PostgreSQL database')
-    return client
-  } catch (err) {
-    console.error('Connection error', err.stack)
-    throw err
+    await sequelize.authenticate();
+    console.log('Connected to PostgreSQL database with Sequelize');
+    return sequelize;
+  } catch (error) {
+    console.error('Sequelize connection error:', error);
+    throw error;
   }
-}
+};
 
-module.exports = { connectToDatabase }
+module.exports = { sequelize, connectToDatabase };
