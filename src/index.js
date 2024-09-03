@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 require('dotenv').config()
-const { indexRoutes } = require('./routes/index.routes')
+const { userRoutes } = require('./routes/user.routes')
 require('./config/mongodb.config')
 const { logger, logRequestDuration } = require('./utils/winston')
 
@@ -11,7 +11,7 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use('/', indexRoutes)
+app.use('/', userRoutes)
 
 app.listen(process.env.PORT, () => {
   console.warn(`server is running at http://localhost:${process.env.PORT}`)
