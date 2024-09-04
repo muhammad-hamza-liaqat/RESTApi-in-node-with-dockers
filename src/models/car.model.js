@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize')
 const { sequelize } = require('../config/postgres.config')
-
+const User = require('./user.model')
 const Car = sequelize.define(
   'Car',
   {
@@ -9,13 +9,21 @@ const Car = sequelize.define(
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
-    carName: {
+    car_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
     model: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    user_id: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: User,
+        key: 'id'
+      }
     }
   },
   {
@@ -23,10 +31,5 @@ const Car = sequelize.define(
     timestamps: true
   }
 )
-sequelize
-  .sync({ force: false }) 
-  .then(() => {
-    console.log('car model sync')
-  })
 
 module.exports = Car

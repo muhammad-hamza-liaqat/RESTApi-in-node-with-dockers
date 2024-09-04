@@ -9,7 +9,7 @@ const User = sequelize.define(
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
-    userName: {
+    user_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -31,10 +31,5 @@ const User = sequelize.define(
     timestamps: true
   }
 )
-sequelize
-  .sync({ force: false }) 
-  .then(() => {
-    console.log('user model sync')
-  })
 
 module.exports = User
