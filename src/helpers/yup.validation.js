@@ -2,9 +2,8 @@ const yup = require('yup')
 const StatusCodes = require('http-status-codes')
 
 const addUserValidation = (req, res, next) => {
-  console.log('body validation', req.body)
   const schema = yup.object({
-    user_name: yup.string().required('userName is required!'),
+    user_name: yup.string().required('user_name is required!'),
     email: yup
       .string()
       .email('Enter a valid Email')
@@ -43,7 +42,7 @@ const addUserValidation = (req, res, next) => {
 
 const addCarValidation = (req, res, next) => {
   const schema = yup.object({
-    car_name: yup.string().required('carName is required!'),
+    car_name: yup.string().required('car_name is required!'),
     model: yup.string().required('model is required!')
   })
   try {
