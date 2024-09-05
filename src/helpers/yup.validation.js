@@ -45,4 +45,18 @@ const loginValidation = (req, res, next) => {
   }
 }
 
-module.exports = { addUserValidation, addCarValidation, loginValidation }
+const addOrderValidation = (req, res, next) => {
+  const schema = yup.object({
+    orderName: yup.string().required('orderName is required!'),
+    carId: yup.string().required('carId is required!'),
+    orderDescription: yup.string().required('orderDescription is required!')
+  })
+  try {
+    schema.validateSync(req.body, { abortEarly: false })
+    next()
+  } catch (error) {
+    res.status(StatusCodes.BAD_REQUEST).json({ error: error.errors })
+  }
+}
+
+module.exports = { addUserValidation, addCarValidation, loginValidation, addOrderValidation }

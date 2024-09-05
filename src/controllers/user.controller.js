@@ -31,7 +31,7 @@ const registerMe = async (req, res) => {
     password: makePasswordHash
   })
   console.log(newUser, "user created successfully!!!!!!!!")
-  response = new HTTPResponse("user created successfully!", StatusCodes.OK)
+  response = new HTTPResponse("user created successfully!", newUser)
   return res.status(StatusCodes.OK).json(response)
 }
 
@@ -49,7 +49,7 @@ const loginMe = async (req, res) => {
     return res.status(StatusCodes.BAD_REQUEST).json(error);
   }
   const token = jwt.sign(
-    { id: user.id, email: user.email, role: user.role },
+    { id: user.id, email: user.email, role: user.role, userName: user.user_name },
     process.env.JWT_SECRET,
     { expiresIn: "1y" }
   );
