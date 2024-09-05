@@ -43,7 +43,8 @@ const Order = sequelize.define(
   },
   {
     tableName: 'orders',
-    timestamps: true
+    timestamps: false
+    // timestamps: true
   }
 )
 

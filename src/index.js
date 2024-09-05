@@ -9,7 +9,7 @@ const { carRoutes } = require('./routes/car.routes')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.use('/', userRoutes)
+app.use('/auth', userRoutes)
 app.use('/car', carRoutes)
 
 startServer(app)

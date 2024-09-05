@@ -3,7 +3,7 @@ const StatusCodes = require('http-status-codes')
 
 const addUserValidation = (req, res, next) => {
   const schema = yup.object({
-    user_name: yup.string().required('user_name is required!'),
+    userName: yup.string().required('user_name is required!'),
     email: yup
       .string()
       .email('Enter a valid Email')
@@ -19,27 +19,6 @@ const addUserValidation = (req, res, next) => {
   }
 }
 
-// const deleteUserValidations = (req, res, next) => {
-//   const schema = yup.object({
-//     id: yup
-//       .string()
-//       .required('ID is required!')
-//       .test({
-//         name: 'isValidObjectId',
-//         message: 'Invalid ID format',
-//         test: value => mongoose.isValidObjectId(value)
-//       })
-//   })
-//   try {
-//     schema.validateSync(req.params, { abortEarly: false })
-//     console.log('validation passed!')
-//     next()
-//   } catch (error) {
-//     res.status(StatusCodes.BAD_REQUEST).json({ error: error.errors })
-//   }
-// }
-
-
 const addCarValidation = (req, res, next) => {
   const schema = yup.object({
     car_name: yup.string().required('car_name is required!'),
@@ -53,4 +32,17 @@ const addCarValidation = (req, res, next) => {
   }
 }
 
-module.exports = { addUserValidation, addCarValidation }
+const loginValidation = (req, res, next) => {
+  const schema = yup.object({
+    email: yup.string().required('email is required!'),
+    password: yup.string().required('password is required!')
+  })
+  try {
+    schema.validateSync(req.body, { abortEarly: false })
+    next()
+  } catch (error) {
+    res.status(StatusCodes.BAD_REQUEST).json({ error: error.errors })
+  }
+}
+
+module.exports = { addUserValidation, addCarValidation, loginValidation }

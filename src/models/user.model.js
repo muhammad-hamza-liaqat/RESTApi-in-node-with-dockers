@@ -24,11 +24,17 @@ const User = sequelize.define(
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    role: {
+      type: DataTypes.ENUM('user', 'admin'),
+      allowNull: true,
+      defaultValue: 'user'
     }
   },
   {
     tableName: 'users',
-    timestamps: true
+    timestamps: false
+    // timestamps: true
   }
 )
 
