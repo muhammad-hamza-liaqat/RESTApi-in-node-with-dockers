@@ -44,7 +44,7 @@ const Order = sequelize.define(
 )
 
 // relationship
-Order.belongsTo(User, { foreignKey: 'user_id' })
-Order.belongsTo(Car, { foreignKey: 'car_id' })
+// Order.belongsTo(User, { foreignKey: 'user_id' })
+// Order.belongsTo(Car, { foreignKey: 'car_id' })
 
 module.exports = Order
