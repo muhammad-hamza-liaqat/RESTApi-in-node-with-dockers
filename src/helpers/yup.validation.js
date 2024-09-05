@@ -21,7 +21,7 @@ const addUserValidation = (req, res, next) => {
 
 const addCarValidation = (req, res, next) => {
   const schema = yup.object({
-    car_name: yup.string().required('car_name is required!'),
+    carName: yup.string().required('carName is required!'),
     model: yup.string().required('model is required!')
   })
   try {

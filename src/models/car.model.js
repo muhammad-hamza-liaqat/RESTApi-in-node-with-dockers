@@ -28,8 +28,7 @@ const Car = sequelize.define(
   },
   {
     tableName: 'cars',
-    timestamps: false
-    // timestamps: true
+    timestamps: true
   }
 )
 

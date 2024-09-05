@@ -42,3 +42,5 @@ const authToken = async (req, res, next) => {
         return res.status(statusCodes.UNAUTHORIZED).json(error);
     }
 };
+
+module.exports = authToken

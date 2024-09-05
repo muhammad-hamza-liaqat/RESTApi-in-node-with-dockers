@@ -10,13 +10,21 @@ const getAllCars = async (req, res) => {
   return res.status(StatusCodes.OK).json(response)
 }
 
-const addCar = async (req, res) => {
-  const newUser = await Car.create({
-    ...req.body,
-    user_id: '04fcc8fe-1991-4a4d-bb39-8cb69b6716ca'
+const addingCar = async (req, res) => {
+  let error, response
+  const { carName, model } = req.body
+  const user = req.user
+
+  console.log('userID', user.id)
+
+  const newCar = await Car.create({
+    car_name: carName,
+    model: model,
+    user_id: user.id
   })
-  let response = new HTTPResponse(StatusCodes.CREATED, newUser)
-  return res.status(StatusCodes.CREATED).json(response)
+  console.log('new car adeed', newCar)
+  response = new HTTPResponse('car added succcessfully!', StatusCodes.OK)
+  return res.status(StatusCodes.OK).json(response)
 }
 
 const getUserCar = async (req, res) => {
@@ -25,8 +33,8 @@ const getUserCar = async (req, res) => {
     FROM users
     INNER JOIN cars ON users.id = cars.user_id;
   `)
-  let response = new HTTPResponse("operation successful", results);
-  return res.status(StatusCodes.OK).json(response);
+  let response = new HTTPResponse('operation successful', results)
+  return res.status(StatusCodes.OK).json(response)
 }
 
-module.exports = { getAllCars, addCar, getUserCar }
+module.exports = { getAllCars, getUserCar, addingCar }
