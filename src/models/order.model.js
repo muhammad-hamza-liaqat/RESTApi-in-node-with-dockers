@@ -35,6 +35,10 @@ const Order = sequelize.define(
     order_date: {
       type: DataTypes.DATE,
       defaultValue: Sequelize.NOW
+    },
+    order_description: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   },
   {
