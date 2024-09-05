@@ -32,4 +32,8 @@ const Car = sequelize.define(
   }
 )
 
+// relationship defined
+// Car.belongsTo(User, { foreignKey: 'user_id' });
+
+
 module.exports = Car
