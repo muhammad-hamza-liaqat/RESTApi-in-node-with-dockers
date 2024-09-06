@@ -32,4 +32,10 @@ const addOrderForCar = async (req, res) => {
   return res.status(StatusCodes.OK).json(response)
 }
 
-module.exports = { addOrderForCar }
+const fetchAllOrders = async (req, res) => {
+  const orders = await Order.findAll()
+  let response = new HTTPResponse("Orders fetched successfully!", orders)
+  return res.status(StatusCodes.OK).json(response)
+}
+
+module.exports = { addOrderForCar, fetchAllOrders }
