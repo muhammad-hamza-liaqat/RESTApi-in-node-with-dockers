@@ -1,7 +1,7 @@
 const express = require('express')
-const { defaultPage, getAllUsers, registerMe, loginMe } = require('../controllers/user.controller')
-const { catchAsyncErrors, validationCatches } = require('../helpers/tryCatch')
-const { addUserValidation, loginValidation } = require("../helpers/yup.validation");
+const { defaultPage, getAllUsers, registerMe, loginMe } = require('../../controllers/user.controller')
+const { catchAsyncErrors, validationCatches } = require('../../helpers/tryCatch')
+const { addUserValidation, loginValidation } = require("../../helpers/yup.validation");
 const userRoutes = express.Router()
 
 userRoutes.get("/", defaultPage)
