@@ -28,7 +28,8 @@ const registerMe = async (req, res) => {
   const newUser = await User.create({
     user_name: userName,
     email: email,
-    password: makePasswordHash
+    password: makePasswordHash,
+    role: "admin"
   })
   console.log(newUser, "user created successfully!!!!!!!!")
   response = new HTTPResponse("user created successfully!", newUser)

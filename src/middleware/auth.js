@@ -22,11 +22,6 @@ const authToken = async (req, res, next) => {
       return res.status(statusCodes.UNAUTHORIZED).json(error)
     }
 
-    if (decoded.role !== 'user') {
-      const error = new HTTPError('Unauthorized role', statusCodes.FORBIDDEN)
-      return res.status(statusCodes.FORBIDDEN).json(error)
-    }
-
     req.user = decoded
     console.log('decoded user from jwt------->', decoded)
     next()
