@@ -11,6 +11,6 @@ orderRoutes.post(
     catchAsyncErrors(addOrderForCar)
 )
 
-orderRoutes.get("/get-orders", authorizeUserOnly, catchAsyncErrors(fetchAllOrders))
+orderRoutes.get("/get-orders", catchAsyncErrors(fetchAllOrders))
 
 module.exports = { orderRoutes }
