@@ -1,26 +1,24 @@
-const User = require('../models/user.model')
-const Car = require('../models/car.model')
+const Category = require('../models/category.model')
+const Customer = require('../models/customer.model')
+const Product = require('../models/product.model')
 const Order = require('../models/order.model')
-const UserAdditionalInfo = require('../models/userAdditional.modelInfo')
+const testProduct = require('../models/testProduct.model')
+const orderDetail = require('../models/orderDetail.model')
 
 const associationDefined = () => {
   console.log('association file called!..................!')
 
-  // user has many cars, car belongs to user
-  User.hasMany(Car, { foreignKey: 'user_id' })
-  Car.belongsTo(User, { foreignKey: 'user_id' })
+  Category.hasMany(Product, { foreignKey: 'category_id' })
+  Product.belongsTo(Category, { foreignKey: 'category_id' })
 
-  // user has many orders, Order belongs to user
-  User.hasMany(Order, { foreignKey: 'user_id' })
-  Order.belongsTo(User, { foreignKey: 'user_id' })
+  Customer.hasMany(Order, { foreignKey: 'customer_id' })
+  Order.belongsTo(Customer, { foreignKey: 'customer_id' })
 
-  // car has many orders, order belongs to car
-  Car.hasMany(Order, { foreignKey: 'car_id' })
-  Order.belongsTo(Car, { foreignKey: 'car_id' })
+  Order.hasMany(orderDetail, { foreignKey: 'order_id' })
+  orderDetail.belongsTo(Order, { foreignKey: 'order_id' })
 
-  // user has one additional information, additionalInformation belongs to user
-  UserAdditionalInfo.belongsTo(User, { foreignKey: 'user_id' })
-  User.hasOne(UserAdditionalInfo, { foreignKey: 'user_id' })
+  Product.hasMany(orderDetail, { foreignKey: 'product_id' })
+  orderDetail.belongsTo(Product, { foreignKey: 'product_id' })
 }
 
 module.exports = associationDefined

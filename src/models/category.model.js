@@ -1,25 +1,26 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/postgres.config');
 
-const Order = sequelize.define(
-  'Order',
+const Category = sequelize.define(
+  'Category',
   {
-    order_id: {
+    category_id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    customer_id: {
-      type: DataTypes.INTEGER
+    category_name: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    order_date: {
-      type: DataTypes.DATE
+    description: {
+      type: DataTypes.STRING
     }
   },
   {
-    tableName: 'orders',
+    tableName: 'categories',
     timestamps: false
   }
 );
 
-module.exports = Order;
+module.exports = Category;
