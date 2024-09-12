@@ -27,13 +27,6 @@ const Customer = sequelize.define(
     },
     country: {
       type: DataTypes.STRING
-    },
-    password:{
-      type: DataTypes.STRING
-    },
-    role: {
-      type: DataTypes.STRING,
-      defaultValue: "user"
     }
   },
   {
