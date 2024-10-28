@@ -17,6 +17,8 @@
   "author": "muhammad-hamza-liaqat",
   "license": "ISC",
   "dependencies": {
+    "@bugsnag/js": "^8.1.2",
+    "@bugsnag/plugin-express": "^8.1.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.6.0"
