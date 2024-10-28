@@ -1,7 +1,6 @@
 const { start } = require('@bugsnag/js');
 const bugsnagExpress = require('@bugsnag/plugin-express');
 
-// Initialize Bugsnag with Express plugin
 const bugsnagClient = start({
     apiKey: process.env.BUGSNAG_API_KEY,
     appVersion: '1.0.0',
@@ -10,6 +9,16 @@ const bugsnagClient = start({
 });
 
 const bugsnagMiddleware = bugsnagClient.getPlugin('express');
+
+process.on('uncaughtException', (error) => {
+    console.error('Uncaught Exception:', error);
+    bugsnagClient.notify(error);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+    bugsnagClient.notify(reason);
+});
 
 module.exports = {
     requestHandler: bugsnagMiddleware.requestHandler,
